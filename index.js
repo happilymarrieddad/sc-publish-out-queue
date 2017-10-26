@@ -26,6 +26,10 @@ module.exports = {
 				packets[i].next(null,packets[i].data);
 			}
 
+			if (debug) {
+				console.log('Number of packets left in the queue: ',queue.length)
+			}
+
 			setTimeout(() => handler(),timeout);
 		}
 		handler();
