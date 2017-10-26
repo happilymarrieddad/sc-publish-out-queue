@@ -30,7 +30,7 @@ module.exports = {
 		}
 		handler();
 
-		scServer.addMiddleware(scServer.MIDDLEWARE_PUBLISH_OUT,function(req,next) => {
+		scServer.addMiddleware(scServer.MIDDLEWARE_PUBLISH_OUT,function(req,next) {
 
 			if (debug) {
 				console.log('Storing packet in queue');
