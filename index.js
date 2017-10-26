@@ -23,11 +23,11 @@ module.exports = {
 			for (var i = 0,len = packets.length; i < len;i++) {
 				var packet = packets[i]
 				var data = packet.req.data
-				var event = packet.req.event
+				var channel = packet.req.channel
 				// var socket = packet.req.socket
 
 				if (debug) {
-					console.log('Publishing data to clients',event);
+					console.log('Publishing data to clients on channel',channel);
 				}
 
 				packet.next(null,data);
