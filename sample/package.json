@@ -2,6 +2,9 @@
   "name": "socketcluster-sample",
   "description": "A sample SocketCluster app",
   "version": "1.0.0",
+  "scripts":{
+    "start":"SCC_STATE_SERVER_HOST=127.0.0.1 SCC_STATE_SERVER_PORT=7777 node server.js"
+  },
   "contributors": [
     {
       "name": "Jonathan Gros-Dubois",

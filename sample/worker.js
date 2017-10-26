@@ -32,16 +32,16 @@ module.exports.run = function (worker) {
     debug:false
   })
 
-  if (worker.id == 0) {
-    worker.exchange.subscribe('send-data').watch(data => {
-      worker.exchange.publish('receive-data',data)
-    })
-  }
+  // if (worker.id == 0) {
+  //   worker.exchange.subscribe('send-data').watch(data => {
+  //     worker.exchange.publish('receive-data',data)
+  //   })
+  // }
 
   /*
     In here we handle our incoming realtime connections and listen for events.
   */
   scServer.on('connection', function (socket) {
-
+    console.log(`Client ${ socket.id } connected to worker ${ worker.id }`)
   });
 };

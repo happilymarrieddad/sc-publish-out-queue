@@ -6,18 +6,18 @@ socket.on('error', function (err) {
 })
 
 socket.on('connect', function () {
-    console.log('CONNECTED')
+    console.log('CONNECTED',socket.id)
 
-    socket.subscribe('receive-data').watch(data => {
-        console.log('receive-data',new Date())
+    socket.subscribe('send-data').watch(data => {
+        console.log('send-data',new Date())
         console.log(data)
     })
 
-    let packet = {
-        id:1
-    }
-    console.log('Sending packet to server',new Date())
-    console.log(packet)
-    socket.publish('send-data',packet)
+    // let packet = {
+    //     id:1
+    // }
+    // console.log('Sending packet to server',new Date())
+    // console.log(packet)
+    // socket.publish('send-data',packet)
 
 })
