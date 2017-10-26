@@ -1,11 +1,24 @@
 {
   "name": "sc-publish-out-queue",
   "version": "0.0.1",
-  "description": "",
+  "description": "SC Publish Out Queue ====================",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Nick Kotenberg",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/happilymarrieddad/sc-publish-out-queue.git"
+  },
+  "keywords": [
+    "SocketCluster",
+    "Publish",
+    "Queue"
+  ],
+  "bugs": {
+    "url": "https://github.com/happilymarrieddad/sc-publish-out-queue/issues"
+  },
+  "homepage": "https://github.com/happilymarrieddad/sc-publish-out-queue#readme"
 }
