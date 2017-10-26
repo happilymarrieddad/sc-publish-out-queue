@@ -1,4 +1,4 @@
-var DEFAULT_TIMEOUT = 50;
+var DEFAULT_TIMEOUT = 10;
 var DEFAULT_NUM_OF_MESSAGE_PER_PASS = 100;
 
 module.exports = {
@@ -24,7 +24,11 @@ module.exports = {
 			}
 
 			for (var i = 0,len = packets.length; i < len;i++) {
-				packets[i].next(null,packets[i].data);
+				var packet = packets[i]
+				var data = packet.req.data
+				// var socket = packet.req.socket
+				// var event = packet.req.event
+				packet.next(null,data);
 			}
 
 			if (debug && num_of_packets) {
@@ -42,7 +46,7 @@ module.exports = {
 			}
 
 			queue.push({
-				data:req.data,
+				req:req,
 				next:next
 			})
 
