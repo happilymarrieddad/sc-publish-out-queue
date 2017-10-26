@@ -13,7 +13,8 @@ module.exports = {
 		var num_of_messages_per_pass = options.numOfMessagesPerPass || DEFAULT_NUM_OF_MESSAGE_PER_PASS;
 
 		var handler = function() {
-			if (debug) {
+			var num_of_packets = queue.length
+			if (debug && num_of_packets) {
 				console.log('Publishing data to clients');
 			}
 
@@ -26,7 +27,7 @@ module.exports = {
 				packets[i].next(null,packets[i].data);
 			}
 
-			if (debug) {
+			if (debug && num_of_packets) {
 				console.log('Number of packets left in the queue: ',queue.length)
 			}
 
