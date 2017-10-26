@@ -14,9 +14,6 @@ module.exports = {
 
 		var handler = function() {
 			var num_of_packets = queue.length
-			if (debug && num_of_packets) {
-				console.log('Publishing data to clients');
-			}
 
 			var packets = [];
 			for (var i = 0; i < num_of_messages_per_pass; i++) {
@@ -26,8 +23,13 @@ module.exports = {
 			for (var i = 0,len = packets.length; i < len;i++) {
 				var packet = packets[i]
 				var data = packet.req.data
+				var event = packet.req.event
 				// var socket = packet.req.socket
-				// var event = packet.req.event
+
+				if (debug) {
+					console.log('Publishing data to clients',event);
+				}
+
 				packet.next(null,data);
 			}
 
