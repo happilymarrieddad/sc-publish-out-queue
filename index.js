@@ -2,7 +2,7 @@ var DEFAULT_TIMEOUT = 10;
 var DEFAULT_NUM_OF_MESSAGE_PER_PASS = 100;
 
 module.exports = {
-	attach:function(worker,options) {
+	attach(worker,options) {
 
 		options = options || {};
 
@@ -12,12 +12,12 @@ module.exports = {
 		var timeout = options.timeout || DEFAULT_TIMEOUT;
 		var num_of_messages_per_pass = options.numOfMessagesPerPass || DEFAULT_NUM_OF_MESSAGE_PER_PASS;
 
-		var handler = function() {
+		var handler = () => {
 			var num_of_packets = queue.length
 
 			var packets = [];
 			for (var i = 0; i < num_of_messages_per_pass; i++) {
-				if (queue.length) packets.push(queue.shift());
+				if (queue.length) packets.push(queue.pop());
 			}
 
 			for (var i = 0,len = packets.length; i < len;i++) {
@@ -39,9 +39,11 @@ module.exports = {
 
 			setTimeout(() => handler(),timeout);
 		}
+
+		// Start the handler
 		handler();
 
-		scServer.addMiddleware(scServer.MIDDLEWARE_PUBLISH_OUT,function(req,next) {
+		scServer.addMiddleware(scServer.MIDDLEWARE_PUBLISH_OUT,(req,next) => {
 
 			if (debug) {
 				console.log('Storing packet in queue');
