@@ -24,13 +24,13 @@ module.exports = {
 				var packet = packets[i]
 				var data = packet.req.data
 				var channel = packet.req.channel
-				// var socket = packet.req.socket
+				var socket = packet.req.socket
 
 				if (debug) {
 					console.log('Publishing data to clients on channel',channel);
 				}
 
-				packet.next(null,data);
+				if (socket.state != socket.CLOSED) packet.next(null,data);
 			}
 
 			if (debug && num_of_packets) {

@@ -1,6 +1,9 @@
 SC Publish Out Queue
 ====================
 
+## Change Log
+0.2.2 - Nov 27, 2017 - Check to see if socket is connected before emiting back.
+
 ## Installation
 ```js
 npm install sc-publish-out-queue --save
